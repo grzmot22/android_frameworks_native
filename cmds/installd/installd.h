@@ -92,6 +92,8 @@
 
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof(*(a)))
 
+#define PREBUNDLED_APP_PREFIX   "/vendor/bundled-app/"
+
 /* data structures */
 
 typedef struct {
@@ -111,6 +113,7 @@ extern dir_rec_t android_data_dir;
 extern dir_rec_t android_asec_dir;
 extern dir_rec_t android_media_dir;
 extern dir_rec_t android_mnt_expand_dir;
+extern dir_rec_t android_prebundled_dir;
 extern dir_rec_array_t android_system_dirs;
 
 typedef struct cache_dir_struct {
@@ -243,7 +246,7 @@ int get_size(const char *uuid, const char *pkgname, int userid,
 int free_cache(const char *uuid, int64_t free_size);
 int dexopt(const char *apk_path, uid_t uid, bool is_public, const char *pkgName,
            const char *instruction_set, int dexopt_needed, bool vm_safe_mode,
-           bool debuggable, const char* oat_dir);
+           bool debuggable, const char* oat_dir, bool boot_complete);
 int mark_boot_complete(const char *instruction_set);
 int movefiles();
 int linklib(const char* uuid, const char* pkgname, const char* asecLibDir, int userId);
